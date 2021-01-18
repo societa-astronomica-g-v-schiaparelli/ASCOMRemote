@@ -5773,6 +5773,7 @@ namespace ASCOM.Remote
                     return (T)(object)singleValue;
 
                 case "Double":
+                    parameterStringValue = parameterStringValue.Replace(",", ".");
                     double doubleValue;
                     if (!double.TryParse(parameterStringValue, NumberStyles.Number, CultureInfo.InvariantCulture, out doubleValue)) throw new InvalidParameterException(string.Format("GetParameter - Supplied argument {0} for parameter {1} can not be converted to a floating point value", parameterStringValue, ParameterName));
                     LogMessage1(requestData, requestData.Elements[URL_ELEMENT_METHOD], string.Format("{0} = {1}", ParameterName, doubleValue.ToString()));
